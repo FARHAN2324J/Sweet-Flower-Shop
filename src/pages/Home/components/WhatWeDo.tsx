@@ -23,7 +23,7 @@ const WhatWeDo = () => {
           trigger: containerRef.current,
           start: "top top",
           end: "+=2000",
-          scrub: 3,
+          scrub: 2,
           pin: true,
           anticipatePin: 1,
         },
