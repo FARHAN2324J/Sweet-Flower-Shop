@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Caprasimo";
+  src: url("./assets/fonts/Caprasimo-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Outfit-Regular";
+  src: url("./assets/fonts/Outfit-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Outfit-Medium";
+  src: url("./assets/fonts/Outfit-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Outfit-Bold";
+  src: url("./assets/fonts/Outfit-Bold.woff2") format("woff2");
+}
+
+@theme {
+  --Background: #ffffff;
+  /* Accent */
+  --Accent1: #0248aa;
+  --Accent2: #496d4a;
+  --Accent3: #d3712c;
+  --Accent4: #772e9b;
+  --Accent5: #ffc800;
+  --Accent6: #000000;
+  --Accent7: #f7f7f7;
+  /* Text */
+  --Headline: #171615;
+  --Body1: #2c2825;
+  --Body2: #00000099;
+  --Caption: #575757;
+  /* Divider */
+  --Divider: #595959;
+  /* Link */
+  --Link: #2c2825;
+  /* Fonts */
+  --font-Caprasimo: "Caprasimo";
+  --font-Outfit-Medium: "Outfit-Medium";
+  --font-Outfit-Bold: "Outfit-Bold";
+  --font-Outfit-Regular: "Outfit-Regular";
+}
+
+@layer utilities {
+  .Display {
+    @apply font-Caprasimo lg:text-3xl md:text-[28px] text-2xl;
+  }
+  .HeadLine1 {
+    @apply font-Outfit-Bold lg:text-[50px] md:text-[45px] text-4xl;
+  }
+  .HeadLine2 {
+    @apply font-Outfit-Bold lg:text-[40px] md:text-4xl text-2xl;
+  }
+  .HeadLine3 {
+    @apply font-Outfit-Bold lg:text-sm text-[12px];
+  }
+  .HeadLine4 {
+    @apply font-Outfit-Bold lg:text-[15px] md:text-[14px] text-[13px];
+  }
+  .P1 {
+    @apply font-Outfit-Regular lg:text-[17px] text-[16px];
+  }
+  .P2 {
+    @apply font-Outfit-Medium lg:text-2xl md:text-[22px] text-lg;
+  }
+  .Caption1 {
+    @apply font-Outfit-Bold md:text-[14px] text-[12px];
+  }
+  .Caption2 {
+    @apply font-Outfit-Bold  text-lg;
+  }
+}
+
+body {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* .wrapper {
+  position: relative;
+
+  display: inline-block;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+
+}
+
+.overlay {
+  position: absolute;
+  top: 50px;  
+  left: 50px;
+  width: 250px;
+  height: 250px;
+
+} */
