@@ -9,7 +9,7 @@ const WhoWeAre = () => {
         We're Our Blooms® and we're here to help you find your floral story.
       </p>
       <Button>about us</Button>
-      <div className="xl:w-[60%] lg:w-[65%] md:w-[80%] w-[80%] py-20 m-auto relative overflow-hidden">
+      <div className="xl:w-[60%] lg:w-[65%] md:w-[80%] w-[90%] py-20 m-auto relative overflow-hidden">
         <div className="carousel-track flex w-max">
           {CarouselImages.map((img) => (
             <img

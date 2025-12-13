@@ -2,6 +2,10 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cards } from "../../../../constants/data";
+import PurpleLg from "../../../assets/images/Purple flowersLg.webp"
+import PurpleMd from "../../../assets/images/Purple flowersMd.webp"
+import PurpleSm from "../../../assets/images/Purple flowersSm.webp"
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,6 +76,12 @@ const WhatWeDo = () => {
           </article>
         ))}
       </div>
+       <picture className="mt-100">
+        <source srcSet={PurpleSm} media="(max-width: 767px)" />
+        <source srcSet={PurpleMd} media="(max-width: 1024px)" />
+        <source srcSet={PurpleLg} media="(min-width: 1025px)" />
+        <img src={PurpleLg} alt="Purple flowers" />
+      </picture>
     </section>
   );
 };
