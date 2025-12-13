@@ -5,7 +5,7 @@ const WhoWeAre = () => {
   return (
     <section className="flex flex-col items-center gap-5 mt-28">
       <h2 className="Caption1 text-(--Caption) uppercase">Who We Are</h2>
-      <p className="HeadLine1 text-(--Headline) xl:w-[40%] lg:w-[75%] md:w-1/2 w-[55%] text-center uppercase mb-4">
+      <p className="HeadLine1 text-(--Headline) xl:w-[40%] lg:w-[75%] md:w-1/2 w-[80%] text-center uppercase mb-4">
         We're Our Blooms® and we're here to help you find your floral story.
       </p>
       <Button>about us</Button>
