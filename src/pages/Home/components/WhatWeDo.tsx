@@ -50,7 +50,7 @@ const WhatWeDo = () => {
       className="flex flex-col items-center justify-center md:mx-10 mx-5 relative"
     >
       <h3 className="HeadLine1 text-(--Headline) uppercase">what we do</h3>
-      <p className="P1 text-(--Body1) my-10 text-center">
+      <p className="P1 text-(--Body1) my-6 text-center">
         We bring a touch of that simple magic into your world.
       </p>
       <div className="relative w-full h-100 flex items-center justify-center lg:mt-15 mt-13">
