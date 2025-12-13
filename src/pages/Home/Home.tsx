@@ -1,10 +1,12 @@
 import Hero from "./components/Hero";
+import WhoWeAre from "./components/WhoWeAre";
 
 const Home = () => {
   return (
-    <section>
+    <>
       <Hero />
-    </section>
+      <WhoWeAre />
+    </>
   );
 };
 
