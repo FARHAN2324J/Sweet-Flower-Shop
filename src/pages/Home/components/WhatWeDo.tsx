@@ -13,12 +13,6 @@ const WhatWeDo = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // حالت اولیه: همه کارت‌ها مخفی
-      gsap.set(".card-1, .card-2, .card-3", {
-        opacity: 0,
-        filter: "blur(10px)",
-      });
-
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -60,7 +54,7 @@ const WhatWeDo = () => {
       <div className="relative w-full h-100 flex items-center justify-center lg:mt-15 mt-15">
         {cards.map((card, index) => (
           <article
-            className={`card-${index + 1} absolute flex flex-col items-center justify-center lg:gap-15 gap-8`}
+            className={`card-${index + 1} absolute flex flex-col items-center justify-center lg:gap-15 gap-8 opacity-0 blur-sm`}
             key={card.id}
           >
             <span className="HeadLine1 text-(--Headline)">{card.number}</span>
