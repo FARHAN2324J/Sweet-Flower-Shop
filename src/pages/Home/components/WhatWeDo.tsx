@@ -13,6 +13,7 @@ const WhatWeDo = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      // حالت اولیه: همه کارت‌ها مخفی
       gsap.set(".card-1, .card-2, .card-3", {
         opacity: 0,
         filter: "blur(10px)",
@@ -33,8 +34,10 @@ const WhatWeDo = () => {
         const current = `.card-${i + 1}`;
         const next = `.card-${i + 2}`;
 
+        // کارت فعلی ظاهر میشه
         tl.to(current, { opacity: 1, filter: "blur(0px)", duration: 1 });
 
+        // وقتی کارت بعدی میاد، کارت فعلی محو میشه
         if (next) {
           tl.to(current, { opacity: 0, filter: "blur(10px)", duration: 1 });
         }
@@ -53,12 +56,11 @@ const WhatWeDo = () => {
       <p className="P1 text-(--Body1) my-6 text-center">
         We bring a touch of that simple magic into your world.
       </p>
+
       <div className="relative w-full h-100 flex items-center justify-center lg:mt-15 mt-15">
         {cards.map((card, index) => (
           <article
-            className={`card-${
-              index + 1
-            } absolute flex flex-col items-center justify-center lg:gap-15 gap-8`}
+            className={`card-${index + 1} absolute flex flex-col items-center justify-center lg:gap-15 gap-8`}
             key={card.id}
           >
             <span className="HeadLine1 text-(--Headline)">{card.number}</span>
@@ -74,6 +76,7 @@ const WhatWeDo = () => {
           </article>
         ))}
       </div>
+
       <picture className="mt-100">
         <source srcSet={PurpleSm} media="(max-width: 767px)" />
         <source srcSet={PurpleMd} media="(max-width: 1024px)" />
