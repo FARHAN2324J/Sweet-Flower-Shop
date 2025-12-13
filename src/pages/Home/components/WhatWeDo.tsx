@@ -53,12 +53,12 @@ const WhatWeDo = () => {
       <p className="P1 text-(--Body1) my-10 text-center">
         We bring a touch of that simple magic into your world.
       </p>
-      <div className="relative w-full h-100 flex items-center justify-center mt-29">
+      <div className="relative w-full h-100 flex items-center justify-center lg:mt-15 mt-10">
         {cards.map((card, index) => (
           <article
             className={`card-${
               index + 1
-            } absolute flex flex-col items-center justify-center gap-15`}
+            } absolute flex flex-col items-center justify-center lg:gap-15 gap-8`}
             key={card.id}
           >
             <span className="HeadLine1 text-(--Headline)">{card.number}</span>
