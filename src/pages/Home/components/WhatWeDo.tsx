@@ -2,10 +2,9 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cards } from "../../../../constants/data";
-import PurpleLg from "../../../assets/images/Purple flowersLg.webp"
-import PurpleMd from "../../../assets/images/Purple flowersMd.webp"
-import PurpleSm from "../../../assets/images/Purple flowersSm.webp"
-
+import PurpleLg from "../../../assets/images/Purple flowersLg.webp";
+import PurpleMd from "../../../assets/images/Purple flowersMd.webp";
+import PurpleSm from "../../../assets/images/Purple flowersSm.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,11 +13,16 @@ const WhatWeDo = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.set(".card-1, .card-2, .card-3", {
+        opacity: 0,
+        filter: "blur(10px)",
+      });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=2000",  
+          end: "+=2000",
           scrub: 3,
           pin: true,
           anticipatePin: 1,
@@ -29,23 +33,15 @@ const WhatWeDo = () => {
         const current = `.card-${i + 1}`;
         const next = `.card-${i + 2}`;
 
-        tl.fromTo(
-          current,
-          { opacity: 0, filter: "blur(10px)" },
-          { opacity: 1, filter: "blur(0px)", duration: 1 }
-        );
+        tl.to(current, { opacity: 1, filter: "blur(0px)", duration: 1 });
 
         if (next) {
-          tl.to(current, {
-            opacity: 0,
-            filter: "blur(10px)",
-            duration: 1,
-          });
+          tl.to(current, { opacity: 0, filter: "blur(10px)", duration: 1 });
         }
       });
     }, containerRef);
 
-    return () => ctx.revert(); 
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -60,7 +56,9 @@ const WhatWeDo = () => {
       <div className="relative w-full h-100 flex items-center justify-center mt-29">
         {cards.map((card, index) => (
           <article
-            className={`card-${index + 1} absolute flex flex-col items-center justify-center gap-15`}
+            className={`card-${
+              index + 1
+            } absolute flex flex-col items-center justify-center gap-15`}
             key={card.id}
           >
             <span className="HeadLine1 text-(--Headline)">{card.number}</span>
@@ -76,7 +74,7 @@ const WhatWeDo = () => {
           </article>
         ))}
       </div>
-       <picture className="mt-100">
+      <picture className="mt-100">
         <source srcSet={PurpleSm} media="(max-width: 767px)" />
         <source srcSet={PurpleMd} media="(max-width: 1024px)" />
         <source srcSet={PurpleLg} media="(min-width: 1025px)" />
