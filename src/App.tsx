@@ -1,12 +1,12 @@
-import Hero from "./pages/Home/components/Hero"
+import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home/Home";
 
 function App() {
-
   return (
-    <>
-    <Hero />
-    </>
-  )
+    <MainLayout>
+      <Home />
+    </MainLayout>
+  );
 }
 
-export default App
+export default App;
