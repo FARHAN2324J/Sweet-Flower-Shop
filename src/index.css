@@ -141,4 +141,5 @@ body {
 
 .Card {
   will-change: opacity;
+  height: 100%;
 }
