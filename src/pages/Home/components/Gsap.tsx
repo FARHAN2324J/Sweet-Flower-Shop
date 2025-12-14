@@ -132,6 +132,7 @@ export default function Gsap() {
           end: "+=500",
           scrub: 1,
           pin: true,
+          invalidateOnRefresh: true,
         },
       });
 
