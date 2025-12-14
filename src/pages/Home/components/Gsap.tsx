@@ -151,7 +151,7 @@ export default function Gsap() {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       <div
         ref={containerRef}
         className="relative h-screen flex w-full items-center justify-center"
@@ -168,7 +168,7 @@ export default function Gsap() {
             <span className="HeadLine1 text-(--Headline)">{card.number}</span>
             <img src={card.src} width={200} height={200} alt={card.alt} />
             <div className="flex flex-col items-center justify-center">
-              <h3 className="HeadLine1 text-(--Accent1) text-center uppercase">
+              <h3 className="HeadLine1 text-(--Accent2) text-center uppercase">
                 {card.title}
               </h3>
               <p className="P1 text-(--Body1) text-center mt-5 xl:w-[40%] lg:w-[55%] md:w-[75%] w-[80%]">
