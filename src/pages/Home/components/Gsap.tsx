@@ -180,7 +180,7 @@ export default function Gsap() {
             ref={(el) => {
               if (el) cardsRef.current[i] = el;
             }}
-            className="absolute flex flex-col items-center justify-center lg:gap-15 gap-10 Card bg-amber-400"
+            className="absolute flex flex-col items-center justify-center lg:gap-15 gap-10 Card"
           >
             <span className="HeadLine1 text-(--Headline)">{card.number}</span>
             <img src={card.src} width={200} height={200} alt={card.alt} />
