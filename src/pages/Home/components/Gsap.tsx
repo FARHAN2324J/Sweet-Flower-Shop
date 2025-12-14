@@ -110,7 +110,7 @@
 //   );
 // }
 
-import {  useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cards } from "../../../../constants/data";
@@ -124,6 +124,26 @@ export default function Gsap() {
 
   useGSAP(() => {
     if (!containerRef.current) return;
+
+    // 🔹 Refresh ScrollTrigger بعد از load کامل تصاویر
+    const imgs = containerRef.current.querySelectorAll("img");
+    let loadedCount = 0;
+    imgs.forEach((img) => {
+      if (img.complete) {
+        loadedCount++;
+      } else {
+        img.addEventListener("load", () => {
+          loadedCount++;
+          if (loadedCount === imgs.length) {
+            ScrollTrigger.refresh(); // بعد از load همه تصاویر
+          }
+        });
+      }
+    });
+    // fallback اگر همه تصاویر قبلاً load شده باشند
+    if (loadedCount === imgs.length) {
+      ScrollTrigger.refresh();
+    }
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
