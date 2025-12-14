@@ -11,7 +11,7 @@ const WhatWeDo = () => {
         We bring a touch of that simple magic into your world.
       </p>
       <Gsap />
-      <picture className="mt-100">
+      <picture>
         <source srcSet={PurpleSm} media="(max-width: 767px)" />
         <source srcSet={PurpleMd} media="(max-width: 1024px)" />
         <source srcSet={PurpleLg} media="(min-width: 1025px)" />

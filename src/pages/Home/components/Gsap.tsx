@@ -152,7 +152,8 @@ export default function Gsap() {
     <div className="w-full">
       <div
         ref={containerRef}
-        className="relative h-screen flex w-full items-center justify-center"
+        className="relative flex w-full items-center justify-center"
+        style={{ height: `${cards.length * 100}vh` }}
       >
         {cards.map((card, i) => (
           <div
