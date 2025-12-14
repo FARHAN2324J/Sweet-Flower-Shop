@@ -195,7 +195,7 @@ export default function Gsap() {
           </div>
         ))}
       </div>
-      <div className="h-screen"></div>
+      <div className="h-100"></div>
     </div>
   );
 }
