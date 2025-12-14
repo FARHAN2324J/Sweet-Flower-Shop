@@ -163,11 +163,12 @@ export default function Gsap() {
               if (el) cardsRef.current[i] = el;
             }}
             className="absolute flex flex-col items-center justify-center lg:gap-15 gap-10 Card"
+            style={{ height: "100vh" }} 
           >
             <span className="HeadLine1 text-(--Headline)">{card.number}</span>
             <img src={card.src} width={200} height={200} alt={card.alt} />
             <div className="flex flex-col items-center justify-center">
-              <h3 className="HeadLine1 text-(--Headline) text-center uppercase">
+              <h3 className="HeadLine1 text-(--Accent1) text-center uppercase">
                 {card.title}
               </h3>
               <p className="P1 text-(--Body1) text-center mt-5 xl:w-[40%] lg:w-[55%] md:w-[75%] w-[80%]">
