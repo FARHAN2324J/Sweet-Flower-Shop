@@ -121,3 +121,8 @@ body {
 .carousel-track:hover {
   animation-play-state: paused;
 }
+
+
+.linear-div-footer {
+  background: linear-gradient(0deg, #4B4605, #00000000);
+}
