@@ -43,7 +43,7 @@ const FlowersGallery = () => {
 
   return (
     <div className="mx-6 mb-10">
-      <h1 className="HeadLine1 py-10 uppercase">gallery</h1>
+      <h1 className="HeadLine1 py-10 text-(--Headline) uppercase">gallery</h1>
       <section className="flex lg:flex-row flex-col gap-8">
         <h2 className="Caption1 text-(--Caption) uppercase  lg:sticky lg:top-20 lg:self-start">
           SEASONAL

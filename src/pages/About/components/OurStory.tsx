@@ -1,0 +1,74 @@
+import pic1 from "../../../assets/images/about/Image (5).webp";
+import pic2 from "../../../assets/images/about/Image (6).webp";
+import pic3 from "../../../assets/images/about/Image (7).webp";
+import profile from "../../../assets/images/about/Image (4).webp";
+import Button from "../../../components/ui/Button";
+
+import bouquetLg from "../../../assets/images/about/Imagelg.webp";
+import bouquetMd from "../../../assets/images/about/Imagemd.webp";
+import bouquetSm from "../../../assets/images/about/Image sm.webp";
+import { about } from "../../../../constants/data";
+
+const OurStory = () => {
+  const pics = [pic1, pic2, pic3];
+  return (
+    <div className="mx-6 mb-10">
+      <h1 className="HeadLine1 py-10 text-(--Headline) uppercase">about</h1>
+      <section className="flex md:flex-row flex-col gap-10">
+        <h2 className="Caption1 text-(--Caption) uppercase md:sticky md:top-20 md:self-start md:w-150">
+          Our story
+        </h2>
+        <div>
+          <article className="flex md:flex-row flex-col gap-3">
+            <img
+              src={profile}
+              className="lg:w-100 w-75 rounded-[30px]"
+              alt="Person carrying flowers"
+            />
+            <div className="flex flex-col">
+              <p className="Caption2 text-(--Body1) uppercase">Lily smith</p>
+              <span className="HeadLine4 text-(--Body2)">Owner</span>
+            </div>
+          </article>
+          <p className="HeadLine2 text-(--Headline) my-15">
+            Our Blooms was founded in honor of Lily Smith’s loving aunts, Teresa
+            and Beth.
+          </p>
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
+            {pics.map((pic, index) => (
+              <img key={index} src={pic} alt={`about image ${index + 1}`} />
+            ))}
+          </div>
+          {about.slice(0, 2).map((para) => (
+            <p
+              key={para.id}
+              className="P2 text-(--Body1) mt-15 mb-10 text-pretty lg:w-150"
+            >
+              {para.dis}
+            </p>
+          ))}
+          <picture className="w-full">
+            <source srcSet={bouquetSm} media="(max-width: 767px)" />
+            <source srcSet={bouquetMd} media="(max-width: 1024px)" />
+            <source srcSet={bouquetLg} media="(min-width: 1025px)" />
+            <img
+              src={bouquetLg}
+              alt="Purple flowers"
+            />
+          </picture>
+          {about.slice(2).map((para) => (
+            <p
+              key={para.id}
+              className="P2 text-(--Body1) mt-15 mb-10 text-pretty lg:w-150"
+            >
+              {para.dis}
+            </p>
+          ))}
+          <Button>BOOK A CONSULTATION</Button>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default OurStory;
