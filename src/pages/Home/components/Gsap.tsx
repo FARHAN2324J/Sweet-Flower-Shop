@@ -110,10 +110,11 @@
 //   );
 // }
 
-import { useLayoutEffect, useRef } from "react";
+import {  useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cards } from "../../../../constants/data";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -121,7 +122,7 @@ export default function Gsap() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
-  useLayoutEffect(() => {
+  useGSAP(() => {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
