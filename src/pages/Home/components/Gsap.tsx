@@ -133,6 +133,7 @@ export default function Gsap() {
           scrub: 1,
           pin: true,
           invalidateOnRefresh: true,
+          pinSpacing: false,
         },
       });
 
@@ -152,8 +153,7 @@ export default function Gsap() {
     <div className="w-full">
       <div
         ref={containerRef}
-        className="relative flex w-full items-center justify-center"
-        style={{ height: `${cards.length * 100}vh` }}
+        className="relative h-screen flex w-full items-center justify-center"
       >
         {cards.map((card, i) => (
           <div
