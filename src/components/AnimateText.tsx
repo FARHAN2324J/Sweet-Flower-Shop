@@ -48,7 +48,7 @@ export function AnimateText({
             scrollTrigger: {
               trigger: textRef.current,
               start: "top 80%",
-              end: scrub ? "bottom 60%" : undefined,
+              end: scrub ? "bottom bottom" : undefined,
               scrub: scrub ? 2 : false,
               once: !scrub,
             },
@@ -66,7 +66,7 @@ export function AnimateText({
               scrollTrigger: {
                 trigger: textRef.current,
                 start: "top 80%",
-                end: scrub ? "bottom 60%" : undefined,
+                end: scrub ? "bottom bottom" : undefined,
                 scrub: scrub ? 2 : false,
                 once: !scrub,
               },
@@ -85,7 +85,7 @@ export function AnimateText({
             scrollTrigger: {
               trigger: textRef.current,
               start: "top 80%",
-              end: scrub ? "bottom 60%" : undefined,
+              end: scrub ? "bottom bottom" : undefined,
               scrub: scrub ? 2 : false,
               once: !scrub,
             },

@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <header className="flex flex-col items-center justify-center mx-10 my-10">
       <h1 className="tracking-tighter font-Caprasimo lg:text-9xl xl:text-[150px] md:text-8xl text-4xl mb-4 text-(--Body1)">
-        <AnimateText animate="chars">Our Blooms®</AnimateText>
+        <AnimateText animate="chars" delay={0.2}>Our Blooms®</AnimateText>
       </h1>
       <picture>
         <source srcSet={flowerSm} media="(max-width: 767px)" />
