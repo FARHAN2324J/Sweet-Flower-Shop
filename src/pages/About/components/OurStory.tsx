@@ -11,6 +11,7 @@ import { about } from "../../../../constants/data";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { AnimateText } from "../../../components/AnimateText";
 gsap.registerPlugin(ScrollTrigger);
 
 const OurStory = () => {
@@ -31,7 +32,7 @@ const OurStory = () => {
 
       if (imagesRef.current.length) {
         ScrollTrigger.batch(imagesRef.current, {
-          start: "top 50%",
+          start: "top 60%",
           onEnter: (batch) => {
             gsap.to(batch, {
               opacity: 1,
@@ -50,7 +51,9 @@ const OurStory = () => {
   }, []);
   return (
     <div className="mx-6 mb-40">
-      <h1 className="HeadLine1 py-10 text-(--Headline) uppercase">about</h1>
+      <h1 className="HeadLine1 py-10 text-(--Headline) uppercase">
+        <AnimateText>about</AnimateText>
+      </h1>
       <section className="flex md:flex-row flex-col gap-10">
         <h2 className="Caption1 text-(--Caption) uppercase md:sticky md:top-20 md:self-start md:w-150">
           Our story
@@ -67,13 +70,21 @@ const OurStory = () => {
               }}
             />
             <div className="flex flex-col">
-              <p className="Caption2 text-(--Body1) uppercase">Lily smith</p>
-              <span className="HeadLine4 text-(--Body2)">Owner</span>
+              <p className="Caption2 text-(--Body1) uppercase">
+                <AnimateText delay={0.3}>Lily smith</AnimateText>
+              </p>
+              <span className="HeadLine4 text-(--Body2)">
+                <AnimateText animate="lines" delay={0.5}>
+                  Owner
+                </AnimateText>
+              </span>
             </div>
           </article>
           <p className="HeadLine2 text-(--Headline) my-15">
-            Our Blooms was founded in honor of Lily Smith’s loving aunts, Teresa
-            and Beth.
+            <AnimateText animate="lines" delay={0.6}>
+              Our Blooms was founded in honor of Lily Smith’s loving aunts,
+              Teresa and Beth.
+            </AnimateText>
           </p>
           <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
             {pics.map((pic, index) => (
@@ -97,7 +108,9 @@ const OurStory = () => {
               key={para.id}
               className="P2 text-(--Body1) mt-15 mb-10 text-pretty lg:w-150"
             >
-              {para.dis}
+              <AnimateText scrub animate="lines">
+                {para.dis}
+              </AnimateText>
             </p>
           ))}
           <picture className="w-full">
@@ -111,7 +124,9 @@ const OurStory = () => {
               key={para.id}
               className="P2 text-(--Body1) mt-15 mb-10 text-pretty lg:w-150"
             >
-              {para.dis}
+              <AnimateText scrub animate="lines">
+                {para.dis}
+              </AnimateText>
             </p>
           ))}
           <Button>BOOK A CONSULTATION</Button>

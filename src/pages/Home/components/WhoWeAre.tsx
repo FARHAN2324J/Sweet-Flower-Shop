@@ -1,12 +1,19 @@
 import Button from "../../../components/ui/Button";
 import { CarouselImages } from "../../../../constants/data";
+import { AnimateText } from "../../../components/AnimateText";
 
 const WhoWeAre = () => {
   return (
     <section className="flex flex-col items-center gap-5 mt-28">
-      <h2 className="Caption1 text-(--Caption) uppercase">Who We Are</h2>
+      <h2 className="Caption1 text-(--Caption) uppercase">
+        <AnimateText>
+          Who We Are
+        </AnimateText>
+      </h2>
       <p className="HeadLine1 text-(--Headline) xl:w-[40%] lg:w-[75%] md:w-1/2 w-[80%] text-center uppercase mb-4">
-        We're Our Blooms® and we're here to help you find your floral story.
+        <AnimateText animate="words" scrub>
+          We're Our Blooms® and we're here to help you find your floral story.
+        </AnimateText>
       </p>
       <Button>about us</Button>
       <div className="xl:w-[60%] lg:w-[65%] md:w-[80%] w-[90%] py-20 m-auto relative overflow-hidden">

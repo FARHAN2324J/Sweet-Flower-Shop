@@ -9,7 +9,7 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
 interface AnimatedTextProps {
   children: React.ReactNode;
   className?: string;
-  animate?: "chars" | "lines";
+  animate?: "chars" | "words" | "lines";
   scrub?: boolean;
   delay?: number;
 }
@@ -27,55 +27,78 @@ export function AnimateText({
     () => {
       if (!textRef.current) return;
 
-      // document.fonts.ready.then(() => {
-      const split = new SplitText(textRef.current, {
-        type: animate === "lines" ? "lines" : "chars",
+      document.fonts.ready.then(() => {
+        const split = new SplitText(textRef.current, {
+          type:
+            animate === "lines"
+              ? "lines"
+              : animate === "words"
+              ? "words"
+              : "chars",
+        });
+
+        if (animate === "chars") {
+          gsap.from(split.chars, {
+            filter: "blur(10px)",
+            stagger: 0.05,
+            duration: 0.3,
+            rotate: 10,
+            delay,
+            ease: "circ",
+            scrollTrigger: {
+              trigger: textRef.current,
+              start: "top 80%",
+              end: scrub ? "bottom 60%" : undefined,
+              scrub: scrub ? 2 : false,
+              once: !scrub,
+            },
+          });
+        }
+        if (animate === "words") {
+          gsap.fromTo(
+            split.words,
+            { opacity: 0.3 },
+            {
+              opacity: 1,
+              duration: 0.1,
+              stagger: 0.15,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: textRef.current,
+                start: "top 80%",
+                end: scrub ? "bottom 60%" : undefined,
+                scrub: scrub ? 2 : false,
+                once: !scrub,
+              },
+            }
+          );
+        }
+        if (animate === "lines") {
+          gsap.from(split.lines, {
+            y: 20,
+            duration: 0.3,
+            filter: "blur(10px)",
+            opacity: 0,
+            stagger: 0.1,
+            delay,
+            ease: "expo.out",
+            scrollTrigger: {
+              trigger: textRef.current,
+              start: "top 80%",
+              end: scrub ? "bottom 60%" : undefined,
+              scrub: scrub ? 2 : false,
+              once: !scrub,
+            },
+          });
+        }
+
+        return () => {
+          split.revert();
+          ScrollTrigger.getAll().forEach((st) => {
+            if (st.trigger === textRef.current) st.kill();
+          });
+        };
       });
-
-      if (animate === "chars") {
-        gsap.from(split.chars, {
-          x: 5,
-          scale: 0.8,
-          opacity: 0,
-          stagger: 0.05,
-          duration: 1,
-          delay,
-          ease: "circ",
-          scrollTrigger: {
-            trigger: textRef.current,
-            start: "top 80%",
-            end: scrub ? "bottom 60%" : undefined,
-            scrub: scrub ? 2 : false,
-            once: !scrub,
-          },
-        });
-      }
-
-      if (animate === "lines") {
-        gsap.from(split.lines, {
-          duration: 1,
-          filter: "blur(10px)",
-          opacity: 0,
-          stagger: 0.1,
-          delay,
-          ease: "expo.out",
-          scrollTrigger: {
-            trigger: textRef.current,
-            start: "top 80%",
-            end: scrub ? "bottom 60%" : undefined,
-            scrub: scrub ? 2 : false,
-            once: !scrub,
-          },
-        });
-      }
-
-      return () => {
-        split.revert();
-        ScrollTrigger.getAll().forEach((st) => {
-          if (st.trigger === textRef.current) st.kill();
-        });
-      };
-      // });
     },
     { scope: textRef, dependencies: [animate, scrub, delay, children] }
   );

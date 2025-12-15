@@ -79,35 +79,6 @@
   }
 }
 
-body {
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* .wrapper {
-  position: relative;
-
-  display: inline-block;
-}
-
-.photo {
-  display: block;
-  width: 100%;
-
-}
-
-.overlay {
-  position: absolute;
-  top: 50px;  
-  left: 50px;
-  width: 250px;
-  height: 250px;
-
-} */
-
-/* Carousel Infinite */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -145,4 +116,3 @@ body {
 .Card {
   will-change: opacity;
 }
-

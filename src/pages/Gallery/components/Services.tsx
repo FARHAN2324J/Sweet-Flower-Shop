@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import { services } from "../../../../constants/data";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
+import { AnimateText } from "../../../components/AnimateText";
 gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
@@ -45,9 +46,13 @@ const Services = () => {
           >
             <div className="flex flex-col gap-4">
               <h3 className=" HeadLine5 uppercase text-(--Headline)">
-                {s.title}
+                <AnimateText scrub animate="lines">
+                  {s.title}
+                </AnimateText>
               </h3>
-              <p className="P1 text-(--Body1)">{s.dis}</p>
+              <p className="P1 text-(--Body1)">
+                <AnimateText scrub animate="words">{s.dis}</AnimateText>
+              </p>
             </div>
 
             <img
