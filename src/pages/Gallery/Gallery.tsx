@@ -7,7 +7,7 @@ const Gallery = () => {
     <>
       <FlowersGallery />
       <Services />
-      <WorkWithUs />
+      {/* <WorkWithUs /> */}
     </>
   );
 };
