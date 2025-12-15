@@ -14,8 +14,8 @@ const WhatWeDo = () => {
       <picture>
         <source srcSet={PurpleSm} media="(max-width: 767px)" />
         <source srcSet={PurpleMd} media="(max-width: 1024px)" />
-        <source srcSet={PurpleLg} media="(min-width: 1025px)" />
-        <img src={PurpleLg} alt="Purple flowers" />
+        <source  srcSet={PurpleLg} media="(min-width: 1025px)" />
+        <img loading="lazy" src={PurpleLg} alt="Purple flowers" />
       </picture>
     </section>
   );

@@ -16,6 +16,7 @@ const WhoWeAre = () => {
               key={img.id}
               src={img.src}
               alt={img.alt}
+              loading="lazy"
               className="md:w-70 w-50 shrink-0 ml-3.75 rounded-[30px] object-cover"
             />
           ))}
@@ -24,6 +25,7 @@ const WhoWeAre = () => {
               key={`copy-${img.id}`}
               src={img.src}
               alt={img.alt}
+              loading="lazy"
               aria-hidden="true"
               className="md:w-70 w-50 shrink-0 ml-3.75 rounded-[30px] object-cover"
             />
