@@ -1,4 +1,4 @@
-// import WorkWithUs from "../Home/components/WorkWithUs";
+import WorkWithUs from "../Home/components/WorkWithUs";
 import FlowersGallery from "./components/FlowersGallery";
 import Services from "./components/Services";
 
@@ -7,7 +7,7 @@ const Gallery = () => {
     <>
       <FlowersGallery />
       <Services />
-      {/* <WorkWithUs /> */}
+      <WorkWithUs />
     </>
   );
 };

@@ -91,6 +91,7 @@ export function AnimateText({
             },
           });
         }
+        ScrollTrigger.refresh();
 
         return () => {
           split.revert();
