@@ -9,29 +9,45 @@ const Services = () => {
   const imagesRef = useRef<HTMLImageElement[]>([]);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      ScrollTrigger.batch(imagesRef.current, {
-        start: "top 80%",
-        onEnter: (batch) => {
-          gsap.fromTo(
-            batch,
-            {
-              clipPath: "inset(0% 0% 100% 0%)",
-            },
-            {
-              clipPath: "inset(0% 0% 0% 0%)",
-              duration: 0.8,
-              ease: "power2.out",
-              stagger: 0.15,
-            }
-          );
-        },
-        once: true,
+    const imgs = imagesRef.current;
+
+    const runAnimation = () => {
+      const ctx = gsap.context(() => {
+        ScrollTrigger.batch(imgs, {
+          start: "top 80%",
+          onEnter: (batch) => {
+            gsap.fromTo(
+              batch,
+              { clipPath: "inset(0% 0% 100% 0%)" },
+              {
+                clipPath: "inset(0% 0% 0% 0%)",
+                duration: 0.8,
+                ease: "power2.out",
+                stagger: 0.15,
+              }
+            );
+          },
+          once: true,
+        });
       });
+
+      return () => ctx.revert();
+    };
+
+    let loadedCount = 0;
+
+    imgs.forEach((img) => {
+      if (img.complete) loadedCount++;
+      else
+        img.addEventListener("load", () => {
+          loadedCount++;
+          if (loadedCount === imgs.length) runAnimation();
+        });
     });
 
-    return () => ctx.revert();
+    if (loadedCount === imgs.length) runAnimation();
   }, []);
+
   return (
     <section className="mx-6 mb-20 mt-50 lg:grid lg:grid-cols-[200px_1fr] lg:gap-20">
       <h2 className="Caption1 text-(--Caption) uppercase lg:my-0 my-8 lg:sticky lg:top-20 lg:self-start">
@@ -51,7 +67,9 @@ const Services = () => {
                 </AnimateText>
               </h3>
               <p className="P1 text-(--Body1)">
-                <AnimateText scrub animate="words">{s.dis}</AnimateText>
+                <AnimateText scrub animate="words">
+                  {s.dis}
+                </AnimateText>
               </p>
             </div>
 
