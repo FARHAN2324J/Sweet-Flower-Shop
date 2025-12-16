@@ -12,34 +12,49 @@ const FlowersGallery = () => {
   useLayoutEffect(() => {
     if (!containerRef.current) return;
 
-    const ctx = gsap.context(() => {
-      ScrollTrigger.batch(
-        containerRef.current?.querySelectorAll("article") || [],
-        {
-          start: "top 90%",
-          onEnter: (batch) => {
-            gsap.to(batch, {
-              opacity: 1,
-              y: 0,
-              stagger: 0.15,
-              duration: 0.6,
-              ease: "power2.out",
-            });
-          },
-          onEnterBack: (batch) => {
-            gsap.to(batch, {
-              opacity: 1,
-              y: 0,
-              stagger: 0.15,
-              duration: 0.6,
-              ease: "power2.out",
-            });
-          },
-        }
-      );
-    }, containerRef);
+    const handleLoad = () => {
+      const ctx = gsap.context(() => {
+        ScrollTrigger.batch(
+          containerRef.current?.querySelectorAll("article") || [],
+          {
+            start: "top 85%",
+            onEnter: (batch) => {
+              gsap.to(batch, {
+                opacity: 1,
+                y: 0,
+                stagger: 0.15,
+                duration: 0.6,
+                ease: "power2.out",
+              });
+            },
+            onEnterBack: (batch) => {
+              gsap.to(batch, {
+                opacity: 1,
+                y: 0,
+                stagger: 0.15,
+                duration: 0.6,
+                ease: "power2.out",
+              });
+            },
+          }
+        );
+      }, containerRef);
 
-    return () => ctx.revert();
+      return () => ctx.revert();
+    };
+
+    const imgs = containerRef.current.querySelectorAll("img");
+    let loadedCount = 0;
+    imgs.forEach((img) => {
+      if (img.complete) loadedCount++;
+      else
+        img.addEventListener("load", () => {
+          loadedCount++;
+          if (loadedCount === imgs.length) handleLoad();
+        });
+    });
+
+    if (loadedCount === imgs.length) handleLoad();
   }, []);
 
   return (
