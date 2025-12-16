@@ -24,7 +24,7 @@ const Button = ({ children }: BtnProps) => {
             duration: 0.6,
             scrollTrigger: {
               trigger: btnRef.current,
-              start: "top 60%",
+              start: "top 80%",
               toggleActions: "play none none none",
             },
           }

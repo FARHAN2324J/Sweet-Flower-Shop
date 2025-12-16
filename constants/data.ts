@@ -26,7 +26,6 @@ import s3 from "../src/assets/images/services/Pink tulips.webp";
 export const navLinks = [
   { id: "gallery", title: "gallery" },
   { id: "about", title: "about" },
-  { id: "contact", title: "contact" },
 ];
 
 export const CarouselImages = [
