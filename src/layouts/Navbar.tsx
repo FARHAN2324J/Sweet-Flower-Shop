@@ -1,14 +1,19 @@
 import { Link } from "react-router-dom";
 import { navLinks } from "../../constants/data";
+import { AnimateText } from "../components/AnimateText";
 const Navbar = () => {
-    const handleClick = () => {
-    window.scrollTo(0, 0); 
+  const handleClick = () => {
+    window.scrollTo(0, 0);
   };
   return (
     <nav className="border-b py-3 mx-6 flex items-center justify-between border-black sticky top-0 z-50 backdrop-blur-lg">
       <Link to="/" className="Display tracking-tighter" onClick={handleClick}>
-        <span className="hidden md:inline">Our Blooms®</span>
-        <span className="md:hidden">O.B.</span>
+        <AnimateText>
+          <span className="hidden md:inline">Our Blooms®</span>
+        </AnimateText>
+        <AnimateText>
+          <span className="md:hidden">O.B.</span>
+        </AnimateText>
       </Link>
       <ul>
         {navLinks.map((link) => (
@@ -16,11 +21,8 @@ const Navbar = () => {
             key={link.id}
             className="inline-flex items-center mx-2 Caption1 uppercase"
           >
-            <Link
-              to={`/${link.id}`}
-              onClick={handleClick}
-            >
-              {link.title}
+            <Link to={`/${link.id}`} onClick={handleClick}>
+              <AnimateText>{link.title}</AnimateText>
             </Link>
           </li>
         ))}

@@ -9,44 +9,34 @@ const Services = () => {
   const imagesRef = useRef<HTMLImageElement[]>([]);
 
   useLayoutEffect(() => {
-    const imgs = imagesRef.current;
+  const imgs = imagesRef.current.filter(Boolean);
 
-    const runAnimation = () => {
-      const ctx = gsap.context(() => {
-        ScrollTrigger.batch(imgs, {
-          start: "top 80%",
-          onEnter: (batch) => {
-            gsap.fromTo(
-              batch,
-              { clipPath: "inset(0% 0% 100% 0%)" },
-              {
-                clipPath: "inset(0% 0% 0% 0%)",
-                duration: 0.8,
-                ease: "power2.out",
-                stagger: 0.15,
-              }
-            );
-          },
-          once: true,
-        });
-      });
+  if (!imgs.length) return;
 
-      return () => ctx.revert();
-    };
-
-    let loadedCount = 0;
-
-    imgs.forEach((img) => {
-      if (img.complete) loadedCount++;
-      else
-        img.addEventListener("load", () => {
-          loadedCount++;
-          if (loadedCount === imgs.length) runAnimation();
-        });
+  const ctx = gsap.context(() => {
+    gsap.set(imgs, {
+      clipPath: "inset(0% 0% 100% 0%)",
     });
 
-    if (loadedCount === imgs.length) runAnimation();
-  }, []);
+    ScrollTrigger.batch(imgs, {
+      start: "top 80%",
+      onEnter: (batch) => {
+        gsap.to(batch, {
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration: 0.8,
+          ease: "power2.out",
+          stagger: 0.15,
+        });
+      },
+      once: true,
+    });
+  });
+
+  ScrollTrigger.refresh();
+
+  return () => ctx.revert();
+}, []);
+
 
   return (
     <section className="mx-6 mb-20 mt-50 lg:grid lg:grid-cols-[200px_1fr] lg:gap-20">
